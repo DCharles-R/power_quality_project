@@ -1,0 +1,2 @@
+../Core/Src/esp32_paquet.c:16:10:calculate_checksum	2
+../Core/Src/esp32_paquet.c:41:19:send_buffer_to_esp32	1

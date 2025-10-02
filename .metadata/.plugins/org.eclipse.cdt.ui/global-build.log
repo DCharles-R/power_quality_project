@@ -1,0 +1,7 @@
+22:50:03 **** Incremental Build of configuration Debug for project signal_analysis_Boot ****
+make -j12 all 
+arm-none-eabi-size  signal_analysis_Boot.elf 
+   text	   data	    bss	    dec	    hex	filename
+  38244	  12336	  22660	  73240	  11e18	signal_analysis_Boot.elf
+Finished building: default.size.stdout
+ 
