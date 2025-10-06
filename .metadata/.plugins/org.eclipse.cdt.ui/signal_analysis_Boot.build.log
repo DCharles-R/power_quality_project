@@ -1,4 +1,4 @@
-08:50:09 **** Incremental Build of configuration Debug for project signal_analysis_Boot ****
+23:17:27 **** Incremental Build of configuration Debug for project signal_analysis_Boot ****
 make -j12 all 
 arm-none-eabi-size  signal_analysis_Boot.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  signal_analysis_Boot.elf
 Finished building: default.size.stdout
  
 
-08:50:12 Build Finished. 0 errors, 0 warnings. (took 2s.476ms)
+23:17:29 Build Finished. 0 errors, 0 warnings. (took 2s.251ms)
 

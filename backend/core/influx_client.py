@@ -43,7 +43,7 @@ class InfluxService:
             self._write_api = self.client.write_api(write_options=WriteOptions(batch_size=500, flush_interval=10_000, write_type=SYNCHRONOUS))
         return self._write_api
 
-    def get_signal_data(self, event_id: str, measurement: str = "voltage"):
+    def get_signal_data(self, event_id: str, measurement: str):
         """
         Recupera los 5120 puntos de una señal de InfluxDB dado un event_id.
         Asume que los puntos están bajo un 'measurement' y 'event_id' tag.

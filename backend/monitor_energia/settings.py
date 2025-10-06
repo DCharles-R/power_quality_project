@@ -137,3 +137,11 @@ INFLUXDB_V2_BUCKET = 'senales_adc' # <<-- ¡CAMBIA ESTO POR TU BUCKET REAL!
 # Nota: En un entorno de producción, nunca coloques tokens directamente en settings.py.
 # Se usarían variables de entorno (ej. os.environ.get('INFLUXDB_TOKEN')).
 # Por ahora, para desarrollo, está bien aquí.
+
+# Configuración de Celery
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' # URL de tu Redis
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0' # Para almacenar los resultados de las tareas
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Mexico_City' # Ajusta a tu zona horaria
