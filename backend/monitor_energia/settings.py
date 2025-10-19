@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -145,3 +146,63 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Mexico_City' # Ajusta a tu zona horaria
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+        'celery_task': { # Formato específico para tareas de Celery
+            'format': '[{asctime}] {levelname}/{processName} ({module}.{funcName}) {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO', # Mostrar INFO y superiores en consola
+            'class': 'logging.StreamHandler',
+            'formatter': 'celery_task', # Usa el formato de Celery Task
+        },
+        'file_celery': { # Opcional: Guardar logs de Celery en un archivo
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/celery_tasks.log'),
+            'maxBytes': 1024 * 1024 * 5, # 5 MB
+            'backupCount': 5,
+            'formatter': 'celery_task',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'core.tasks': { # Nuestro logger específico para tareas
+            'handlers': ['console', 'file_celery'], # Envía a consola y al archivo
+            'level': 'DEBUG', # Captura TODO desde DEBUG en core.tasks
+            'propagate': False,
+        },
+        'celery': { # El logger propio de Celery
+            'handlers': ['console', 'file_celery'],
+            'level': 'INFO', # O DEBUG si quieres ver más detalles internos de Celery
+            'propagate': False,
+        },
+        '': { # Logger raíz: para todo lo demás que no tiene un logger específico
+            'handlers': ['console'],
+            'level': 'WARNING',
+        },
+    },
+}
+
+# Asegúrate de que el directorio 'logs' exista
+LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+if not os.path.exists(LOGS_DIR):
+    os.makedirs(LOGS_DIR)

@@ -1,0 +1,335 @@
+[2025-10-19 19:47:17,377] ERROR/MainProcess (influx_client.get_recent_event_ids) Error al obtener event_ids recientes de InfluxDB: (<urllib3.connection.HTTPConnection object at 0x7f7d9a905130>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/core/influx_client.py", line 98, in get_recent_event_ids
+    tables = self.query_api.query(query, org=self.org)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/client/query_api.py", line 203, in query
+    response = self._query_api.post_query(org=org, query=self._create_query(query, self.default_dialect, params),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 285, in post_query
+    (data) = self.post_query_with_http_info(**kwargs)  # noqa: E501
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 311, in post_query_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 343, in call_api
+    return self.__call_api(resource_path, method,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 173, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 388, in request
+    return self.rest_client.POST(url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 311, in POST
+    return self.request("POST", url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 186, in request
+    r = self.pool_manager.request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 449, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 494, in request
+    self.endheaders()
+  File "/usr/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7f7d9a905130>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+[2025-10-19 19:47:07.362843+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:48:15,564] ERROR/MainProcess (influx_client.get_recent_event_ids) Error al obtener event_ids recientes de InfluxDB: (<urllib3.connection.HTTPConnection object at 0x7efc2e6391c0>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/core/influx_client.py", line 98, in get_recent_event_ids
+    tables = self.query_api.query(query, org=self.org)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/client/query_api.py", line 203, in query
+    response = self._query_api.post_query(org=org, query=self._create_query(query, self.default_dialect, params),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 285, in post_query
+    (data) = self.post_query_with_http_info(**kwargs)  # noqa: E501
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 311, in post_query_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 343, in call_api
+    return self.__call_api(resource_path, method,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 173, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 388, in request
+    return self.rest_client.POST(url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 311, in POST
+    return self.request("POST", url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 186, in request
+    r = self.pool_manager.request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 449, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 494, in request
+    self.endheaders()
+  File "/usr/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7efc2e6391c0>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+[2025-10-19 19:48:05.549775+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:49:17,351] ERROR/MainProcess (influx_client.get_recent_event_ids) Error al obtener event_ids recientes de InfluxDB: (<urllib3.connection.HTTPConnection object at 0x7efd488ed280>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/cadie/projects/backend/core/influx_client.py", line 98, in get_recent_event_ids
+    tables = self.query_api.query(query, org=self.org)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/client/query_api.py", line 203, in query
+    response = self._query_api.post_query(org=org, query=self._create_query(query, self.default_dialect, params),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 285, in post_query
+    (data) = self.post_query_with_http_info(**kwargs)  # noqa: E501
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/service/query_service.py", line 311, in post_query_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 343, in call_api
+    return self.__call_api(resource_path, method,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 173, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/api_client.py", line 388, in request
+    return self.rest_client.POST(url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 311, in POST
+    return self.request("POST", url,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/influxdb_client/_sync/rest.py", line 186, in request
+    r = self.pool_manager.request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 449, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 493, in _make_request
+    conn.request(
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 494, in request
+    self.endheaders()
+  File "/usr/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/cadie/projects/backend/venv/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0x7efd488ed280>, 'Connection to 192.168.3.14 timed out. (connect timeout=10.0)')
+[2025-10-19 19:49:04.404930+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:50:05.635111+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:51:08.814197+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:52:07.862908+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:53:04.984654+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:54:07.559049+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:55:09.002325+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:56:05.827379+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:57:08.230521+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:58:08.518977+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 19:59:08.750264+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:00:05.906046+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:01:07.981272+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:02:08.048565+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:03:05.173353+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:04:08.270379+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:05:08.327136+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:06:05.521876+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:07:08.958645+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:08:08.051771+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:09:08.088368+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:10:05.308953+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:11:08.601576+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:12:08.632672+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:13:05.850141+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:14:07.920790+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:15:07.994872+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:16:07.416792+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:17:05.438991+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:18:08.060355+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:19:07.768718+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:20:05.750607+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:21:08.475357+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:22:08.248737+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:23:08.024723+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:24:05.325387+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:25:09.696874+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:26:09.830888+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:27:05.574579+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:28:09.916080+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:29:09.352527+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:30:06.190425+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:31:09.661879+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:32:10.078474+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:33:05.942191+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:34:09.377964+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:35:09.777110+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:36:06.590817+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:37:10.616978+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
+[2025-10-19 20:38:10.620127+00:00] Iniciando sondeo de InfluxDB para nuevos eventos en los últimos 5 minutos...
+No se encontraron nuevos eventos en InfluxDB en este período.
